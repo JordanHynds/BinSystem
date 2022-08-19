@@ -1,13 +1,14 @@
 var express = require('express');
 var router = express.Router();
 const { google } = require("googleapis")
+require('dotenv').config()
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
 
-
+    let credentials = JSON.parse(process.env.CREDENTIALS);
     const auth = new google.auth.GoogleAuth({
-        keyFilename: 'credentials.json',
+        credentials,
         // Scopes can be specified either as an array or as a single, space-delimited string.
         scopes: ['https://www.googleapis.com/auth/spreadsheets']
     });

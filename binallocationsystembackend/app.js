@@ -6,8 +6,7 @@ var logger = require('morgan');
 var cors = require("cors");
 
 
-//var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 var skusRouter = require("./routes/getSkuInfo")
 var excelDataRouter = require("./routes/getExcelData")
 var excelUpdateRouter = require("./routes/updateBin")
@@ -25,11 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 app.use('/getSkuInfo', skusRouter)
 app.use('/getExcelData', excelDataRouter)
 app.use('/updateBin', excelUpdateRouter)
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
